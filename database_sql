@@ -1,0 +1,40 @@
+CREATE TABLE `tb_todolist` (
+    `todo_id`       int(10)         unsigned    NOT NULL    AUTO_INCREMENT,
+    `user_id`       int(10)         unsigned    NOT NULL,
+    `group_id`      int(10)         unsigned    NOT NULL,
+    `todo_content`  varchar(255)                NOT NULL    DEFAULT '',
+    `todo_add_date` datetime                                default NULL,
+    `todo_status`   int(4)          unsigned    NOT NULL    default 0,
+    PRIMARY KEY (`todo_id`)
+    )
+
+CREATE TABLE `tb_user` (
+    `user_id`       int(10)         unsigned    NOT NULL    AUTO_INCREMENT,
+    `user_name`     varchar(255)                NOT NULL,
+    `user_passwd`   varchar(255)                NOT NULL,
+    `user_status`   int(4)          unsigned    NOT NULL,   default 0,
+    PRIMARY KEY (`user_id`)
+    )
+
+CREATE TABLE `tb_group` (
+    `group_id`      int(10)         unsigned    NOT NULL    AUTO_INCREMENT,
+    `group_name`    varchar(255)                NOT NULL,
+    `group_creater` int(10)         unsigned    NOT NULL,
+    `group_manager` int(4)          unsigned    NOT NULL,   default 0,
+    PRIMARY KEY (`group_id`)
+    )
+
+CREATE TABLE `tb_belong` (
+    `belong_id`     int(10)         unsigned    NOT NULL    AUTO_INCREMENT,
+    `user_id`       int(10)         unsigned    NOT NULL,
+    `group_id`      int(10)         unsigned    NOT NULL,
+    PRIMARY KEY (`belong_id`)
+    )
+
+CREATE TABLE `tb_operation` (
+    `operation_id`      int(10)     unsigned    NOT NULL    AUTO_INCREMENT,
+    `operation_content` varchar(255)            NOT NULL,
+    `todo_id`           int(10)     unsigned    NOT NULL,
+    `operation_date`    datetime                            default NULL,
+    PRIMARY KEY (`operation_id`)
+    )
